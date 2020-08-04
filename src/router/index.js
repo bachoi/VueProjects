@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MenuList from '@/components/MenuList'
+import MenuItem from '@/components/MenuItem'
 import MenuItemEdit from '@/components/MenuItemEdit'
+import MenuItemView from '@/components/MenuItemView'
 
 Vue.use(VueRouter)
 
@@ -13,14 +15,32 @@ const routes = [
         component: Home
     },
     {
-        path: '/MenuList',
+        path: '/menulist',
         name: 'MenuList',
         component: MenuList
     },
     {
-        path: '/MenuItemEdit/:id?',
-        name: 'MenuItemEdit',
-        component: MenuItemEdit
+        path: '/menulist/:id',
+        name: 'MenuItem',
+        component: MenuItem,
+        children:
+            [
+                {
+                    path: '/new',
+                    name: 'MenuItemNew',
+                    component: MenuItemEdit
+                },
+                {
+                    path: 'edit',
+                    name: 'MenuItemEdit',
+                    component: MenuItemEdit
+                },
+                {
+                    path: 'view',
+                    name: 'MenuItemView',
+                    component: MenuItemView
+                }
+            ]
     },
     {
         path: '/about',

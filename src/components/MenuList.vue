@@ -2,7 +2,7 @@
     <div style="text-align:left">
         <h1>{{title}}</h1>
         <br/>
-        <router-link to="/MenuItemEdit">Add new food item</router-link>
+        <router-link to="/new">Add new food item</router-link>
         <br/><br/>
         <table>
             <thead>
@@ -45,7 +45,7 @@
 
             methods: {
                 gotoMenuItemEdit: function (menuItem) {
-                    this.$router.push("/MenuItemEdit/" + menuItem.id);
+                    this.$router.push(`/menulist/${menuItem.id}/edit`);
                 },
 
                 deleteMenuItem: function (menuItem) {

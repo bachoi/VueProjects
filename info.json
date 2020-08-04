@@ -1,39 +1,18 @@
 {
   "menu": [
     {
-      "name": "11111111",
-      "description": "1111111",
-      "weight": 11,
-      "price": 11,
+      "name": "Борщ со сметаной",
+      "description": "вкусный",
+      "weight": 300,
+      "price": 15.6,
       "id": 1
     },
     {
-      "name": "444",
-      "description": "444",
-      "weight": 44,
-      "price": 44,
-      "id": 4
-    },
-    {
-      "name": "sasasasas",
-      "description": "22eew",
-      "weight": 111111,
-      "price": 11,
-      "id": 6
-    },
-    {
-      "name": "555555555",
-      "description": "55",
-      "weight": 55,
-      "price": 55,
-      "id": 8
-    },
-    {
-      "name": "77777777",
-      "description": "777",
-      "weight": 77,
-      "price": 77,
-      "id": 9
+      "name": "Помпот из абрикосов",
+      "description": "Очень сладкий",
+      "weight": 200,
+      "price": 4.1,
+      "id": 2
     }
   ]
 }
