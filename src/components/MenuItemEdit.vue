@@ -46,7 +46,7 @@
 
         mounted() {
             if (this.$route.params.id) {            
-                    axios.get("http://localhost:3000/menu/" + this.$route.params.id)
+                    axios.get("/menu/" + this.$route.params.id)
                         .then(response => (this.menuItem = response.data))
                         .catch(error => console.log(error));
             }
@@ -71,13 +71,13 @@
 
                 
                 if (this.menuItem.id) {
-                    axios.patch("http://localhost:3000/menu/" + this.$route.params.id, this.menuItem)
+                    axios.patch("/menu/" + this.$route.params.id, this.menuItem)
                         .then((response) => { this.menuItem = response.data; this.$router.push("/MenuList"); })
                         .catch(error => (console.log(error)));
                 }
                 else {
                     this.menuItem.id = 0;
-                    axios.post("http://localhost:3000/menu", this.menuItem)
+                    axios.post("/menu", this.menuItem)
                         .then((response) => { this.menuItem = response.data; this.$router.push("/MenuList"); })
                         .catch(error => (console.log(error)));
                 }

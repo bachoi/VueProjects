@@ -38,7 +38,7 @@
 
             mounted() {
                 axios
-                    .get('http://localhost:3000/menu')
+                    .get('/menu')
                     .then(response => (this.menu = response.data))
                     .catch(error => console.log(error));
             },
@@ -51,7 +51,7 @@
                 deleteMenuItem: function (menuItem) {
                     if (window.confirm(`Удалить данное блюдо \"${menuItem.name}\"из списка?`)) {
                         axios
-                            .delete('http://localhost:3000/menu/' + menuItem.id)
+                            .delete('/menu/' + menuItem.id)
                             .then(this.menu = this.menu.filter(function (item) { return item.id !== menuItem.id }))
                             .catch(error => console.log(error));
                     }
