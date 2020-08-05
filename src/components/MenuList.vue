@@ -1,27 +1,35 @@
 ﻿<template>    
     <div style="text-align:left">
         <h1>{{title}}</h1>
-        <br/>
+        <br />
         <router-link to="/new">Add new food item</router-link>
-        <br/><br/>
-        <table>
-            <thead>
-                <tr style="font-weight:bold">
-                    <td style="width:400px">Название</td>
-                    <td style="width:100px">Вес, гр</td>
-                    <td style="width:100px">Цена, руб.</td>
-                    <td style="width:100px"></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="menuItem in menu">
-                    <td><a href="#" v-on:click="gotoMenuItemEdit(menuItem)">{{menuItem.name}}</a></td>
-                    <td>{{menuItem.weight}}</td>
-                    <td>{{menuItem.price}}</td>
-                    <td><button value="Удалить" v-on:click="deleteMenuItem(menuItem)">Удалить</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <br /><br />
+        
+        <br /><br />
+        <div style="width:50%">
+            <b-table :data="menu">
+                <template slot-scope="props">
+                    <b-table-column field="id" label="ID" width="40" numeric>
+                        {{ props.row.id }}
+                    </b-table-column>
+                    <b-table-column field="name" label="Название" width="300">
+                        <a href="#" v-on:click="gotoMenuItemEdit(props.row)">{{props.row.name}}</a>
+                    </b-table-column>
+                    <b-table-column field="description" label="Описание" width="300">
+                        {{ props.row.description }}
+                    </b-table-column>
+                    <b-table-column field="weight" label="Вес, гр." width="150" numeric>
+                        {{ props.row.weight }}
+                    </b-table-column>
+                    <b-table-column field="price" label="Цена, руб." width="150" numeric>
+                        {{ props.row.price }}
+                    </b-table-column>
+                    <b-table-column label="Удалить" width="150" numeric>
+                        <b-button value="Удалить" v-on:click="deleteMenuItem(props.row)">Удалить</b-button>
+                    </b-table-column>
+                </template>
+            </b-table>
+        </div>
     </div>    
 </template>
 
@@ -49,12 +57,15 @@
                 },
 
                 deleteMenuItem: function (menuItem) {
-                    if (window.confirm(`Удалить данное блюдо \"${menuItem.name}\"из списка?`)) {
-                        axios
-                            .delete('/menu/' + menuItem.id)
-                            .then(this.menu = this.menu.filter(function (item) { return item.id !== menuItem.id }))
-                            .catch(error => console.log(error));
-                    }
+                    this.$buefy.dialog.confirm({
+                        message: `Удалить данное блюдо \"${menuItem.name}\"из списка?`,
+                        onConfirm: () => {
+                            axios
+                                .delete('/menu/' + menuItem.id)
+                                .then(this.menu = this.menu.filter(function (item) { return item.id !== menuItem.id }))
+                                .catch(error => console.log(error))
+                        }
+                    })
                 }
             }
         }

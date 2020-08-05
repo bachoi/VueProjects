@@ -35,9 +35,13 @@
 
         </div>
         <br /><br />
-        <div style="text-align:center; width: 50%; margin:0 auto">
-            <input type="button" value="Сохранить" style="margin-right:30px" v-on:click="save()"/>
-            <router-link to="/MenuList"><input type="button" value="Отмена"/></router-link>
+        <div class="buttons" style="width: 50%; margin:0 auto">
+            <div style="margin:0 auto">
+                <b-button type="is-primary" @click="save()">Сохранить</b-button>
+                <router-link to="/MenuList">
+                    <b-button>Отмена</b-button>
+                </router-link>
+            </div>
         </div>
     </div>
 </template>
