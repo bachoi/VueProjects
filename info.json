@@ -9,7 +9,7 @@
     },
     {
       "name": "Помпот из абрикосов",
-      "description": "Очень сладкий",
+      "description": "Очень сладкий a",
       "weight": 200,
       "price": 4.1,
       "id": 2
@@ -20,6 +20,13 @@
       "weight": 200,
       "price": 4.4,
       "id": 3
+    },
+    {
+      "name": "test",
+      "description": "test111",
+      "weight": 300,
+      "price": 56,
+      "id": 4
     }
   ]
 }
